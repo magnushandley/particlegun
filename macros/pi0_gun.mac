@@ -1,0 +1,28 @@
+####################################################################
+#
+# Generate a 1000 MeV pi0 beamed in the down stream direction. These are generated in a 30cm circle around the middle of the detector.
+#
+
+# Define the particle and it's energy.
+/gps/particle pi0
+/gps/energy 1000 MeV
+
+# Set the position of the particle gun.
+
+/gps/pos/shape Circle
+/gps/pos/type Plane
+#center the circle upstream of the TMS front face
+/gps/pos/centre 0 -1.35 11 m
+/gps/pos/radius 30. cm
+/gps/ang/type iso
+/gps/ang/maxtheta 20 deg
+
+# Rotate so pions travel downstream
+
+/gps/ang/rot1 1 0 0
+/gps/ang/rot2 0 -1 0
+
+/run/initialize
+
+#number of events to simulate
+/run/beamOn 1000
